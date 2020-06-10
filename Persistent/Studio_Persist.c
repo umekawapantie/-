@@ -181,14 +181,14 @@ int Studio_Perst_SelectByID(int ID, studio_t *buf) {
 int Studio_Perst_SelectAll(studio_list_t list) {
 	studio_node_t *newNode;
 	studio_t data;
-	int recCount = 0;
+	int cnt = 0;
 
 	assert(NULL!=list);
 
 	List_Free(list, studio_node_t);
 
 	FILE *fp = fopen(STUDIO_DATA_FILE, "rb");
-	if (NULL == fp) { //文件不存在
+	if (fp == NULL) { //文件不存在
 		return 0;
 	}
 
@@ -196,15 +196,14 @@ int Studio_Perst_SelectAll(studio_list_t list) {
 		if (fread(&data, sizeof(studio_t), 1, fp)) {
 			newNode = (studio_node_t*) malloc(sizeof(studio_node_t));
 			if (!newNode) {
-				printf(
-						"Warning, Memory OverFlow!!!\n Cannot Load more Data into memory!!!\n");
+				printf("溢出！\n");
 				break;
 			}
 			newNode->data = data;
 			List_AddTail(list, newNode);
-			recCount++;
+			cnt++;
 		}
 	}
 	fclose(fp);
-	return recCount;
+	return cnt;
 }
