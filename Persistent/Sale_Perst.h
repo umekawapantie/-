@@ -1,8 +1,6 @@
 #ifndef SALE_PERST_H_
-
 #define SALE_PERST_H_
 #include "../Service/Sale.h"
-
 #include "../Common/common.h"
 #include"../Common/List.h"
 
