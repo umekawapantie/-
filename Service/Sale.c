@@ -2,7 +2,7 @@
 #include "../Persistence/Ticket_Perst.h"
 #include "../Common/List.h"
 
-//根据票的信息插入到订单的信息（销售纪律中） 
+//将新产生的售票订单信息添加到销售记录中 
 int Sale_Srv_Add(sale_t *data)
 {
    return Sale_Perst_Insert(data);
