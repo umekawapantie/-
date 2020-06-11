@@ -1,19 +1,25 @@
 #ifndef TICKET_UI_H_
 #define TICKET_UI_H_
-#include"Ticket_Ser.h"
-//   schedule_id   biao shi yu piao xiang guan de yan chu ji hua de id 
-void Ticket_UI_MgtEntry(int schedule_id);
+#include "../Common/list.h"
+#include "../Service/Ticket.h"
+#include "../Service/Seat.h"
+#include "../Service/Schedule.h"
 
+static const int TICKET_PAGE_SIZE = 8;
 
-void Ticket_UI_Query(void);
+int UpdateTicket(int id);
 
-int Ticket_UI_ShowTicket(int ticket_id);
+int QueryTicket(int id);
 
-int Ticket_Srv_FetchBySchID(int ID, ticket_list_t list);
+void ListTickets(void);
 
-ticket_node_t* Ticket_Srv_FetchBySeatID(ticket_list_t list, int seat_id);
+//状态转换为字符
+inline char Ticket_UI_Status2Char(ticket_status_t status);
 
-int Ticket_Srv_Modify(const ticket_t* data);
+//根据票ID打印票
+void Ticket_UI_Print(int ID);
 
-void Ticket_UI_Print(const ticket_t data);
-#endif
+//根据计划ID显示所有票
+void Ticket_UI_ListBySch(const schedule_t* sch, ticket_list_t tickList, seat_list_t seatList);
+
+#endif /* TICKET_UI_H_ */
