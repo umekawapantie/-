@@ -50,6 +50,7 @@ int Ticket_Perst_Update (const ticket_t *data){
 		if (fread(&rec, sizeof(ticket_t), 1, fp)) {
 
 			if (rec.id == data->id) {
+				fseek(fp, -sizeof(ticket_t), SEEK_CUR);//fseek移动文件的当前位置指针，SEEK_CUR或1表示当前位置，表示指针向后一个记录
 				fwrite(data, sizeof(ticket_t), 1, fp);
 				rtn = 1;
 				break;
