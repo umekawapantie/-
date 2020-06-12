@@ -4,7 +4,6 @@
 #include "../Common/common.h"
 #include"../Common/List.h"
 
-
 int Sale_Perst_Insert (sale_t *data);
 
 int Ticket_Perst_Update (const ticket_t *data);
