@@ -76,7 +76,7 @@ int SalesAnalysis_Perst_SelectAll(salesanalysis_list_t list) {
 /*
 遍历读Sale.dat文件建立list（sale_list_t） 链表，返回链表list长度
 */
-int Sale_Perst_SelectAll(sale_list_t list) {
+int Sale_Perst_SelectALL(sale_list_t list) {
 	sale_node_t* newNode;
 	sale_t data;
 	int recCount = 0;
